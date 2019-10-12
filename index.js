@@ -452,7 +452,7 @@ export const checkIsAmazonDevice = () => {
 
 export const getUserData = async() => {
   console.log('hit getUserData');
-  let userInfo = JSON.parse(await RNIapAmazonModule.getUserData());
+  let userInfo = await RNIapAmazonModule.getUserData();
   console.log('user data returning from index.js of IAP module');
   return userInfo;
 }

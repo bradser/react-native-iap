@@ -54,6 +54,11 @@ export interface SubscriptionPurchase extends ProductPurchase {
 
 export type Purchase = ProductPurchase | SubscriptionPurchase
 
+export interface UserDataAmazon {
+  userId: string;
+  marketplace: string;
+}
+
 /**
  * @deprecated Deprecated since 2.0.0. Prepare module for purchase flow. Required on Android. No-op on iOS.
  * @returns {Promise<string>}
@@ -203,3 +208,9 @@ export function addAdditionalSuccessPurchaseListenerIOS(fn: Function) : EmitterS
  * @param fulfillmentResult either "FULFILLED" or "UNAVAILABLE".
  */
 export function notifyFulfillmentAmazon(receiptId: string, fulfillmentResult: string) : void;
+
+
+/**
+ * Get the user information of the logged-in customer that is used for Amazon in-app purchases.
+ */
+export function getUserData() : Promise<UserDataAmazon>;

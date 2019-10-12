@@ -54,6 +54,11 @@ export type SubscriptionPurchase = ProductPurchase & {
 
 export type Purchase = ProductPurchase | SubscriptionPurchase
 
+export type UserDataAmazon {
+  userId: string,
+  marketplace: string,
+}
+
 declare module.exports: {
   getProducts: (string[]) => Promise<Product<string>[]>,
   getSubscriptions(string[]): Promise<Subscription<string>[]>,
@@ -63,6 +68,7 @@ declare module.exports: {
   consumeAllItems(): Promise<void>,
   getPurchaseHistory(): Promise<Purchase[]>,
   getAvailablePurchases(): Promise<Purchase[]>,
+  getUserData(): Promise<UserDataAmazon>,
   buySubscription(
     sku: string,
     oldSku?: string,
